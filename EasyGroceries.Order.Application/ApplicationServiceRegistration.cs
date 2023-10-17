@@ -1,4 +1,5 @@
-﻿using EasyGroceries.Order.Application.Contracts.Services;
+﻿using EasyGroceries.Order.Application.Contracts.MessageBus;
+using EasyGroceries.Order.Application.Contracts.Services;
 using EasyGroceries.Order.Application.Services;
 using EasyGroceries.Order.Application.Validators;
 using FluentValidation;
@@ -22,6 +23,7 @@ namespace EasyGroceries.Order.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IMessageBus, MessageBus>();
             services.AddValidatorsFromAssemblyContaining<OrderHeaderDtoValidator>();
             return services;
         }
